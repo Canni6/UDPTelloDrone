@@ -31,7 +31,7 @@ public class EchoClient {
         address = InetAddress.getByName("192.168.10.1");
     }
  
-    public String sendEcho(String msg) throws IOException {
+    public String sendEcho(String msg) throws IOException, InterruptedException {
         buf = msg.getBytes();
         DatagramPacket packet 
           = new DatagramPacket(buf, buf.length, address, 8889);

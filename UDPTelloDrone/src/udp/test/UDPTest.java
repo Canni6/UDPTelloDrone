@@ -24,7 +24,6 @@ public class UDPTest {
     }
  
     public static void tearDown() throws IOException {
-        client.sendEcho("end");
         client.close();
     }
 
@@ -38,5 +37,6 @@ public class UDPTest {
     	System.out.println("Flight complete.");
     	tearDown();	
     	System.out.println("Client/Server closed.");
+    	System.exit(0);
     }
 }

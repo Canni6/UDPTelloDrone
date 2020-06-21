@@ -29,7 +29,7 @@ public class TelloFlightSequence
 		return echo;
 	}
 	
-	public void sendCommand(String command) throws IOException
+	public void sendCommand(String command) throws IOException, InterruptedException
 	{
 		echo = client.sendEcho(command);
 	}
@@ -70,17 +70,25 @@ public class TelloFlightSequence
 		sendCommand("takeoff");
 		Thread.sleep(2000);
 		
-		System.out.println("Forward heading 1 m");
-		sendCommand("forward 100");
+		System.out.println("Forward heading 0.5 m");
+		sendCommand("forward 50");
+		System.out.println("Flip forward");
+		sendCommand("flip f");
+		System.out.println("Forward heading 0.5 m");
+		sendCommand("forward 50");
+		
 		Thread.sleep(1000);
 		
 		System.out.println("Rotate 180 degrees clockwise");
 		sendCommand("cw 180");
 		Thread.sleep(1000);
 		
-		System.out.println("Forward heading 1 m");
-		sendCommand("forward 100");
-		Thread.sleep(1000);
+		System.out.println("Forward heading 0.5 m");
+		sendCommand("forward 50");
+		System.out.println("Flip forward");
+		sendCommand("flip f");
+		System.out.println("Forward heading 0.5 m");
+		sendCommand("forward 50");
 		
 		System.out.println("Rotate 180 degrees clockwise");
 		sendCommand("cw 180");
