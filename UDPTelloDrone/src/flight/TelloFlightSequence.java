@@ -46,15 +46,12 @@ public class TelloFlightSequence
     	Thread.sleep(2000);
     	System.out.println("Flight countdown commenced.");
     	Thread.sleep(2000);
-    	for(int i = 10; i > 0; i --)
+    	for(int i = 10; i > 1; i --)
     	{
     		System.out.println(i + "...");
-    		if(i==0)
-    		{
-    			System.out.println("LIFT OFF!");
-    		}
     		Thread.sleep(1000);
     	}
+    	System.out.println("LIFT OFF!");
     }
     
 	public void commenceFlightSequence() throws IOException, InterruptedException {

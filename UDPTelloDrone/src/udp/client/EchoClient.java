@@ -27,23 +27,21 @@ public class EchoClient {
      */
  
     public EchoClient() throws UnknownHostException, SocketException {
-        socket = new DatagramSocket();
-        address = InetAddress.getByName("192.168.10.1");
+    	socket = new DatagramSocket();
+    	address = InetAddress.getByName("192.168.10.1");
     }
- 
+
     public String sendEcho(String msg) throws IOException, InterruptedException {
-        buf = msg.getBytes();
-        DatagramPacket packet 
-          = new DatagramPacket(buf, buf.length, address, 8889);
-        socket.send(packet);
-        packet = new DatagramPacket(buf, buf.length);
-        socket.receive(packet);
-        String received = new String(
-          packet.getData(), 0, packet.getLength());
-        return received;
+    	buf = msg.getBytes();
+    	DatagramPacket packet = new DatagramPacket(buf, buf.length, address, 8889);
+    	socket.send(packet);
+    	packet = new DatagramPacket(buf, buf.length);
+    	socket.receive(packet);
+    	String received = new String(packet.getData(), 0, packet.getLength());
+    	return received;
     }
- 
+
     public void close() {
-        socket.close();
+    	socket.close();
     }
 }

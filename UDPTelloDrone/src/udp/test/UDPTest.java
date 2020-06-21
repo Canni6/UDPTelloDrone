@@ -16,27 +16,27 @@ import udp.server.EchoServer;
  */
 
 public class UDPTest {
-    static EchoClient client;
+	static EchoClient client;
 
-    public static void setup() throws SocketException, UnknownHostException{
-        new EchoServer().start();
-        client = new EchoClient();
-    }
- 
-    public static void tearDown() throws IOException {
-        client.close();
-    }
+	public static void setup() throws SocketException, UnknownHostException{
+		new EchoServer().start();
+		client = new EchoClient();
+	}
 
-    
-    public static void main(String[] args) throws IOException, InterruptedException
-    {
-    	setup();
-    	System.out.println("Client/Server setup complete.");
-    	TelloFlightSequence flight = new TelloFlightSequence(client);
-    	flight.commenceFlightSequence();
-    	System.out.println("Flight complete.");
-    	tearDown();	
-    	System.out.println("Client/Server closed.");
-    	System.exit(0);
-    }
+	public static void tearDown() throws IOException {
+		client.close();
+	}
+
+
+	public static void main(String[] args) throws IOException, InterruptedException
+	{
+		setup();
+		System.out.println("Client/Server setup complete.");
+		TelloFlightSequence flight = new TelloFlightSequence(client);
+		flight.commenceFlightSequence();
+		System.out.println("Flight complete.");
+		tearDown();	
+		System.out.println("Client/Server closed.");
+		System.exit(0);
+	}
 }
