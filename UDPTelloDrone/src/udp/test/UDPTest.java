@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 
-import flight.TelloFlightSequence;
+import flight.FlightCommands;
+import flight.FlightUserInput;
 import udp.client.EchoClient;
 import udp.server.EchoServer;
 
@@ -32,8 +33,8 @@ public class UDPTest {
 	{
 		setup();
 		System.out.println("Client/Server setup complete.");
-		TelloFlightSequence flight = new TelloFlightSequence(client);
-		flight.commenceFlightSequence();
+		FlightCommands command = new FlightCommands(client);
+		command.commenceFlight();
 		System.out.println("Flight complete.");
 		tearDown();	
 		System.out.println("Client/Server closed.");

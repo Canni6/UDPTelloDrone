@@ -14,12 +14,12 @@ import udp.client.EchoClient;
  * - https://www.baeldung.com/udp-in-java
  */
 
-public class TelloFlightSequence
+public class FlightCommands
 {
 	String echo = null;
 	EchoClient client;
 	
-	public TelloFlightSequence(EchoClient client)
+	public FlightCommands(EchoClient client)
 	{
 		this.client = client;
 	}
@@ -27,6 +27,11 @@ public class TelloFlightSequence
 	public String getEcho()
 	{
 		return echo;
+	}
+	
+	public EchoClient getClient()
+	{
+		return client;
 	}
 	
 	public void sendCommand(String command) throws IOException, InterruptedException
@@ -54,7 +59,7 @@ public class TelloFlightSequence
     	System.out.println("LIFT OFF!");
     }
     
-	public void commenceFlightSequence() throws IOException, InterruptedException {
+	public void commenceFlight() throws IOException, InterruptedException {
    	
 		sendCommand("command");
 		assertEquals("ok", echo);
@@ -67,6 +72,15 @@ public class TelloFlightSequence
 		sendCommand("takeoff");
 		Thread.sleep(2000);
 		
+		// Flight commands here
+		//flightSequence();
+		new FlightUserInput(client, this);
+		
+		checkBattery();
+   }
+	
+	public void flightSequence() throws IOException, InterruptedException
+	{
 		System.out.println("Forward heading 0.5 m");
 		sendCommand("forward 50");
 		System.out.println("Flip forward");
@@ -93,6 +107,7 @@ public class TelloFlightSequence
 		
 		System.out.println("Commence landing protocol");
 		sendCommand("land");
-		checkBattery();
-   }
+	}
 }
+
+
